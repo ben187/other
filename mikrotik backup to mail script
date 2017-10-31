@@ -1,0 +1,7 @@
+First step: Tune email: Tools > Email > Email settings
+Second step: Create script:
+
+export file=rich1
+system backup save name=rich1
+tool e-mail send to="technovert@yandex.ru" subject="backup" file="rich1.backup"
+tool e-mail send to="technovert@yandex.ru" subject="backup" file="rich1.rsc"
