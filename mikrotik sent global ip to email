@@ -1,0 +1,2 @@
+:global lastip [ip address get [find interface="pppoe-out1"] address ]
+tool e-mail send to="email@email.com" subject="lastip" body="$lastip"
