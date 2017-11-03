@@ -1,1 +1,18 @@
 All CCNA CLI commands:
+
+hostname
+enable secret password
+
+line console 0
+password password
+login
+
+line vty 0 15
+password password
+login
+
+service password-encryption
+banner motd # the message of the day #
+
+reload
+erase startup-config
