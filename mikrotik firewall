@@ -1,0 +1,34 @@
+/ip firewall nat
+add action=masquerade chain=srcnat out-interface=pppoe-out1
+
+/ip firewall filter
+
+Дропаем все инвалидные:
+add action=drop chain=input comment=Invalid connection-state=invalid
+add action=drop chain=forward connection-state=invalid
+
+Разрешаем все установленные и связанные:
+add action=accept chain=input comment="Established, Related" connection-state=established,related
+add action=accept chain=forward connection-state=established,related
+
+Разрешаем локалке ходить в инет:
+add action=accept chain=forward comment="Local in Internet" in-interface=bridge1 out-interface=pppoe-out1
+
+Разрешаем подключаться снаружи к mikrotik через winbox:
+add action=accept chain=input comment=Winbox dst-port=8291 protocol=tcp
+
+Разрешаем пинг снаружи:
+add action=accept chain=input comment=ICMP in-interface=pppoe-out1 protocol=icmp
+
+Разрешаем доступ к нашему pptp server на самом mikrotik:
+add action=accept chain=input comment=PPTP dst-port=1723 protocol=tcp
+add action=accept chain=input protocol=gre
+
+Разрешаем ходить из vpn сети в локалку и обратно:
+add action=accept chain=forward dst-address=192.168.0.0/24 in-interface=pptp
+add action=accept chain=forward out-interface=pptp src-address=192.168.0.0/24
+
+Дропаем все остальное:
+
+add action=drop chain=input comment="All others"
+add action=drop chain=forward
