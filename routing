@@ -1,0 +1,35 @@
+show ip route 
+show ip route static
+show ip route сеть
+
+show ipv6 route
+show ipv6 route static
+show ipv6 route сеть
+
+show cdp neighbors detail 
+
+########## Static:
+ip route 0.0.0.0 0.0.0.0 192.168.1.2
+ip route 10.1.1.0 255.255.255.0 serial0/0/0
+ip route 10.1.1.0 255.255.255.0 GigabitEthernet 0/1 192.168.1.2
+ip route 10.1.1.0 255.255.255.0 192.168.1.1 5
+
+ipv6 unicast-routing
+ipv6 route ::/0 2001:DB8:ACAD:2::1
+ipv6 route 2001:DB8:ACAD:4::/64 2001:DB8:ACAD:2::1
+ipv6 route 2001:DB8:ACAD:4::/64 2001:DB8:ACAD:2::1 5
+ipv6 route 2001:DB8:ACAD:4::/64 serial0/0/0
+ipv6 route 2001:DB8:ACAD:4::/64 serial0/0/0 fe80::1
+
+########## RIP
+router rip
+version 2
+no auto-summary
+passive-interface gigabitethernet 0/0
+passive-interface default
+no passive-interface
+default-information originate
+network 192.168.0.0
+
+no router rip
+

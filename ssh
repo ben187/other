@@ -1,0 +1,9 @@
+# ip domain-name cisco.com
+# crypto key generate rsa
+# username admin secret 123
+# line vty 0 15
+# transport input ssh
+# login local
+
+# show ip ssh 
+# ip ssh version 2

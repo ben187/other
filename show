@@ -1,0 +1,19 @@
+show version
+show protocols
+show cdp neighbors
+
+show arp
+
+show interfaces
+show ip interface
+show ip interface brief
+show ipv6 interface brief
+
+show ip route
+show ipv6 route
+
+debug all 
+debug ip packet
+
+terminal monitor
+terminal no monitor

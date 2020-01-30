@@ -1,0 +1,1 @@
+net use LPT1: \\<computername>\<sharedprintername> /persistent:yes

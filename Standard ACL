@@ -1,0 +1,14 @@
+access-list номер списка доступа { deny | permit | remark } source [ source-wildcard ][ log ]
+
+EXAMPLES:
+access-list 10 permit host 192.168.10.10
+access-list 10 permit 192.168.10.0 0.0.0.255
+
+no access-list 10
+show access-lists
+show access-list 10
+
+Router(config-if)# ip access-group { access-list-number | access-list-name } { in | out }
+no ip access-group
+
+ip access-list standard Имя

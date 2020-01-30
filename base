@@ -1,0 +1,28 @@
+hostname
+enable secret password
+service password-encryption
+banner motd # the message of the day #
+security passwords min-length 10
+login block-for 120 attempts 3 within 60
+exec-timeout 10
+
+line console 0
+password password
+login
+
+line vty 0 15
+password password
+login
+
+SSH:
+ip domain-name
+crypto key generate rsa general-keys
+username name
+line vty 0 15
+login local 
+transport input ssh
+
+reload
+erase startup-config
+
+boot system flash:/path
