@@ -1,3 +1,4 @@
+
 hostname
 enable secret password
 service password-encryption
